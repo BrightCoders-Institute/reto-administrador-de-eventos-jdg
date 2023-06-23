@@ -1,0 +1,23 @@
+name: RubyCritic
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install rubycritic
+        run: gem install rubycritic
+
+      - name: RubyCritic App
+        run: mkdir -p ${{ runner.temp }}/rubycritic && rubycritic --no-browser -p ${{ runner.temp }}/rubycritic/rubycritic-app -s 90 app config lib
+
+      - name: RubyCritic on Tests
+        run: mkdir -p ${{ runner.temp }}/rubycritic && rubycritic --no-browser -p ${{ runner.temp }}/rubycritic/rubycritic-app -s 65 spec test

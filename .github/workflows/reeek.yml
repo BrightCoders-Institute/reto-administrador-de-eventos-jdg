@@ -1,0 +1,25 @@
+name: Reek
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  reek_analysis:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7
+
+      - name: Install dependencies
+        run: gem install reek
+
+      - name: Run Reek
+        run: reek --failure-exit-code
