@@ -17,6 +17,6 @@ jobs:
         uses: cfcortesmx/ai-codereviewer@main
 
         with:
-          GITHUB_TOKEN: ${{ secrets.BCMAY23_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.BCMAY23_TOKEN_U }}
           OPENAI_API_KEY: ${{ secrets.BCMAY23_OPENAI_KEY }}
           exclude: "**/*.json, **/*.md" # Optional: exclude patterns separated by commas
