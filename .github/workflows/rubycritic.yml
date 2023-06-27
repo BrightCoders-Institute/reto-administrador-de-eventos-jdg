@@ -17,7 +17,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - uses: docker://ruby:2.7-slim
+      - uses: docker://ruby:3.1-slim
 
       - name: Install rubycritic
         run: sudo gem install rubycritic
