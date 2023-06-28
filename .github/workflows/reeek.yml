@@ -16,10 +16,16 @@ jobs:
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.7
+          ruby-version: 3.1
 
       - name: Install dependencies
         run: gem install reek
 
       - name: Run Reek
-        run: reek --failure-exit-code
+        run: |
+          set -e
+          reek
+          if [ $? -ne 0 ]; then
+            echo "Reek analysis failed"
+            exit 1
+          fi
