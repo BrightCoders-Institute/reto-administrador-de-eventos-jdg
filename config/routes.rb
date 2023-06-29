@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  get '/events', to: 'events#index'
+  get '/', to: 'events#index'
+  get '/show', to: 'events#show'
 end
