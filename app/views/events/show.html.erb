@@ -3,7 +3,6 @@
   <table class="table table-striped table-hover ">
   <thead class="table-dark"> 
     <tr>
-      <th scope="col">ID</th>
       <th scope="col">Title</th>
       <th scope="col">Description</th>
       <th scope="col">Date</th>
@@ -16,9 +15,6 @@
   <tbody>
     <% @event.each do |event| %>
       <tr>
-        <td>
-          <%= event.id %>
-        </td>
         <td>
           <%= event.title %>
         </td>
@@ -35,10 +31,16 @@
           $<%= event.cost %>
         </td>
         <td>
-          <span class="material-symbols-outlined hover-span"> edit </span>
+          <%= link_to "Edit", edit_event_path(event), class: "material-symbols-outlined hover-span" %>
         </td>
         <td>
-          <span class="material-symbols-outlined hover-span"> delete </span>
+          <li>
+            <%= link_to "Delete", event_path(event), method: :delete, data: {
+              turbo_method: :delete,
+              turbo_confirm: "Are you sure?"
+            }, class: "material-symbols-outlined hover-span" %>
+          </li>
+          
         </td>
       </tr>
     <% end %>
