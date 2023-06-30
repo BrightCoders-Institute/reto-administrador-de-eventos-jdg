@@ -3,13 +3,13 @@
 one:
   title: MyString
   description: MyText
-  date: 2023-06-28 14:49:30
+  date: 2023-06-29
   location: MyString
   cost: 9.99
 
 two:
   title: MyString
   description: MyText
-  date: 2023-06-28 14:49:30
+  date: 2023-06-29
   location: MyString
   cost: 9.99
