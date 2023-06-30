@@ -1,9 +1,6 @@
 class EventsController < ApplicationController
-  def index
-    @events = Event.all
-  end
-
-  def show
+  #This method will show the events in /events view
+  def events
     @events = Event.all
   end
 
