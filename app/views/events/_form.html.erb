@@ -1,43 +1,40 @@
-<div class="color-label">
-  <%= form_with model: @event do |form|%>
-    <div class="row mb-3">
-      <%= form.label :title %><br>
-      <%= form.text_field :title %>
-      <% @event.errors.full_messages_for(:title).each do |message| %>
-        <div><%= message %></div>
-      <% end %>
-    </div>
-
-    <div class="row mb-3">
-      <%= form.label :description %><br>
-      <%= form.text_area :description %>
-    </div>
-
-    <div class="row mb-3">
-      <%= form.label :date %><br>
-      <%= form.date_field :date %>
-      <% @event.errors.full_messages_for(:date).each do |message| %>
+<%= form_with model: @event do |form|%>
+  <div class="row mb-3">
+    <%= form.label :title, class:"mb-2" %><br>
+    <%= form.text_field :title %>
+    <% @event.errors.full_messages_for(:title).each do |message| %>
       <div><%= message %></div>
     <% end %>
-    </div>
+  </div>
 
-    <div class="row mb-3">
-      <%= form.label :location %><br>
-      <%= form.text_area :location %>
-      <% @event.errors.full_messages_for(:location).each do |message| %>
-      <div><%= message %></div>
-    <% end %>
-    </div>
+  <div class="row mb-3">
+    <%= form.label :description, class:"mb-2" %><br>
+    <%= form.text_area :description %>
+  </div>
 
-    <div class="row mb-5">
-      <%= form.label :cost %><br>
-      <%= form.number_field :cost, step: :any %>
-    </div>
-
-    <div class="text-center">
-      <%= form.submit class: "btn btn-form text-uppercase" %>
-    </div>
-
+  <div class="row mb-3">
+    <%= form.label :date, class:"mb-2" %><br>
+    <%= form.date_field :date %>
+    <% @event.errors.full_messages_for(:date).each do |message| %>
+    <div><%= message %></div>
   <% end %>
+  </div>
 
-</div>
+  <div class="row mb-3">
+    <%= form.label :location, class:"mb-2" %><br>
+    <%= form.text_area :location %>
+    <% @event.errors.full_messages_for(:location).each do |message| %>
+    <div><%= message %></div>
+  <% end %>
+  </div>
+
+  <div class="row mb-5">
+    <%= form.label :cost, class:"mb-2" %><br>
+    <%= form.number_field :cost, step: :any %>
+  </div>
+
+  <div class="text-center">
+    <%= form.submit class: "btn bg-primary text-white text-uppercase" %>
+  </div>
+
+<% end %>

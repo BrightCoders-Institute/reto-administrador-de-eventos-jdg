@@ -17,9 +17,7 @@
 @import "bootstrap";
 
 body {
-  background-color: hsl(219, 100%, 33%);
   h1 {
-    color: white;
     font-weight: bold;
   }
   .hover-span:hover {
@@ -34,19 +32,9 @@ body {
 
 .btn-new {
   background-color: hsl(54, 100%, 50%);
-  color: white;
-}
-
-.color-label {
-  color: white;
+  color: hsl(255, 100%, 100%);
 }
 
 .event-list {
-  background-color: white;
-  color: black;
+  background-color: hsl(219, 100%, 30%);
 }
-
-tbody > tr > td {
-  color: white !important;
-};
-
