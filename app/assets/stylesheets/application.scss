@@ -1,4 +1,5 @@
-/*
+/* Base
+
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
  *
@@ -13,21 +14,27 @@
  *= require_tree .
  *= require_self
  */
-//Importing bootstrap
 @import "bootstrap";
-/* Base */
-:root {
-  --header-color: hsl(0, 0%, 28%);
-  --font-size-header: 25px;
-}
+
 body {
   h1 {
-    color: var(--head-color);
-    font-size: var(--font-size-header);
     font-weight: bold;
   }
-  //hover to span icons
   .hover-span:hover {
     cursor: pointer;
   }
+}
+
+.btn-form {
+  background-color: hsl(54, 100%, 50%);
+  font-weight: 700;
+}
+
+.btn-new {
+  background-color: hsl(54, 100%, 50%);
+  color: hsl(255, 100%, 100%);
+}
+
+.event-list {
+  background-color: hsl(219, 100%, 30%);
 }
