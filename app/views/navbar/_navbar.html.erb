@@ -3,12 +3,14 @@
     <%= link_to root_path, class: 'navbar-brand' do %>
       <%= image_tag("events_logo.png", alt: "Events logo", width: "30%") %>
     <% end %>
-
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <%= link_to 'START', show_event_path, class: 'btn btn-primary' %>
+      <%= link_to 'START', show_event_path, class: 'btn btn-primary me-3' %>
+      <% if user_signed_in? %>
+        <%= link_to "LOGOUT", log_out_path, class: 'btn btn-secondary' %>
+      <% end %>
     </div>
   </div>
 </nav>

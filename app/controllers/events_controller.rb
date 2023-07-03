@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[update destroy edit]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   def index
     @events = Event.all
   end
@@ -38,6 +39,11 @@ class EventsController < ApplicationController
     @event.destroy
 
     redirect_to root_path, status: :see_other
+  end
+
+  def log_out
+    sign_out(current_user)
+    redirect_to root_path
   end
 
   private
