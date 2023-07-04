@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[update destroy edit]
-  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: %i[new create edit update destroy]
   def index
     @events = Event.all
   end
@@ -22,12 +22,9 @@ class EventsController < ApplicationController
     end
   end
 
-  def edit
-    
-  end
+  def edit; end
 
   def update
-
     if @event.update(events_params)
       redirect_to @event
     else
@@ -47,6 +44,7 @@ class EventsController < ApplicationController
   end
 
   private
+
   def events_params
     params.require(:event).permit(:title, :description, :date, :location, :cost)
   end
@@ -54,5 +52,4 @@ class EventsController < ApplicationController
   def set_event
     @event = Event.find(params[:id])
   end
-
 end
