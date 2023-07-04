@@ -18,12 +18,12 @@
           </button>
 
           <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-            <%= link_to 'START' , show_event_path, class: 'btn btn-primary me-3' %>
-              <% if user_signed_in? %>
-                <%= link_to "LOGOUT" , log_out_path, class: 'btn btn-secondary' %>
-                  <% else %>
-                    <%= link_to "LOGIN" , user_session_path, class: 'btn btn-dark' %>
-                      <% end %>
+            <%= link_to 'START' , root_path , class: 'btn btn-primary me-3' %>
+            <% if user_signed_in? %>
+              <%= link_to "LOGOUT" , log_out_path, class: 'btn btn-secondary' %>
+            <% else %>
+              <%= link_to "LOGIN" , user_session_path, class: 'btn btn-dark' %>
+            <% end %>
           </div>
   </div>
 </nav>

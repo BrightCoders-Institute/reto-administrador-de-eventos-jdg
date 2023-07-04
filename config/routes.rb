@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   end
 
   root "events#index"
-  get '/events/show', to: 'events#show', as: 'show_event'
+  #get '/events/show', to: 'events#show', as: 'show_event'
   resources :events
 end
 
