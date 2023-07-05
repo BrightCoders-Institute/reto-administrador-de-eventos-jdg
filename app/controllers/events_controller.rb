@@ -33,11 +33,6 @@ class EventsController < ApplicationController
     redirect_to events_path, status: :see_other
   end
 
-  def logout
-    sign_out(current_user)
-    redirect_to root_path, notice: 'You have been logged out successfully.'
-  end
-
   private
 
   def events_params
