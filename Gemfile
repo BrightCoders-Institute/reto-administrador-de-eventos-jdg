@@ -36,6 +36,9 @@ gem 'rubycritic'
 # Reek
 gem 'reek'
 
+# Devise
+gem 'devise', '~> 4.9', '>= 4.9.2'
+
 # Boostrap
 gem 'bootstrap'
 # Use Redis adapter to run Action Cable in production

@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <h2 class="mb-3 text-center">SIGN UP</h2>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= render "devise/shared/error_messages" , resource: resource %>
+
+          <div class="form-group mb-3">
+              <%= f.label :name %><br />
+              <%= f.text_field :name, class: "form-control", placeholder:"Jose Lopez" %>
+          </div>
+
+          <div class="form-group mb-3">
+            <%= f.label :email %><br />
+              <%= f.email_field :email, autocomplete: "email" , class: "form-control",  placeholder:"example@example.com" %>
+          </div>
+
+          <div class="form-group mb-3">
+            <%= f.label :password %>
+              <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <% end %><br />
+                  <%= f.password_field :password, autocomplete: "new-password" , class: "form-control",  placeholder:"******" %>
+          </div>
+
+          <div class="form-group">
+            <%= f.label :password_confirmation %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password" , class: "form-control", placeholder:"******" %>
+          </div>
+
+          <div class="form-group text-center mt-3">
+            <%= f.submit "CREATE ACCOUNT" , class: "btn btn-primary w-100 my-3" %>
+          </div>
+          <% end %>
+
+    </div>
+  </div>
+</div>
