@@ -3,11 +3,8 @@ Rails.application.routes.draw do
 
   # Add the log out route
   devise_scope :user do
-    get '/log_out', to: 'devise/sessions#destroy', as: 'log_out'
   end
 
-  root "events#index"
-  #get '/events/show', to: 'events#show', as: 'show_event'
+  root 'home#index'
   resources :events
 end
-

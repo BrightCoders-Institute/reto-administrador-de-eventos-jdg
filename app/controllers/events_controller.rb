@@ -1,12 +1,8 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[update destroy edit] 
+  before_action :set_event, only: %i[update destroy edit]
   before_action :authenticate_user!
   def index
     @events = Event.all
-  end
-
-  def show
-    @event = Event.all
   end
 
   def new
@@ -16,8 +12,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(events_params)
     if @event.save
-      redirect_to @event
-    else
+      redirect_to events_path
       render :new, status: :unprocessable_entity
     end
   end
@@ -26,7 +21,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(events_params)
-      redirect_to @event
+      redirect_to events_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -35,12 +30,12 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
 
-    redirect_to root_path, status: :see_other
+    redirect_to events_path, status: :see_other
   end
 
-  def log_out
+  def logout
     sign_out(current_user)
-    redirect_to root_path
+    redirect_to root_path, notice: 'You have been logged out successfully.'
   end
 
   private
