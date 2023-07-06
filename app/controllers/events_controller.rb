@@ -14,8 +14,7 @@ class EventsController < ApplicationController
     if @event.save
       redirect_to events_path
     else
-      flash[:errors] = @event.errors.full_messages
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

@@ -1,47 +1,47 @@
-<%= form_for @event, multipart: true do |form|%>
-<div class="row mb-3">
-  <div class="col-md-12">
-    <%= form.label :title, class:"form-label mb-2" %><br />
-    <%= form.text_field :title, class: "form-control" %> <%
-    @event.errors.full_messages_for(:title).each do |message| %>
-    <div class="text-danger"><%= message %></div>
-    <% end %>
+<%= form_with model: @event do |form|%>
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <%= form.label :title, class:"form-label mb-2" %><br>
+      <%= form.text_field :title, class: "form-control" %>
+      <% @event.errors.full_messages_for(:title).each do |message| %>
+        <div class="text-danger"><%= message %></div>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<div class="row mb-3">
-  <div class="col-md-12">
-    <%= form.label :description, class:"form-label mb-2" %><br />
-    <%= form.text_area :description, class: "form-control" %>
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <%= form.label :description, class:"form-label mb-2" %><br>
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
   </div>
-</div>
 
-<div class="row mb-3">
-  <div class="col-md-12">
-    <%= form.label :date, class:"form-label mb-2" %><br />
-    <%= form.date_field :date, class: "form-control" %> <%
-    @event.errors.full_messages_for(:date).each do |message| %>
-    <div class="text-danger"><%= message %></div>
-    <% end %>
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <%= form.label :date, class:"form-label mb-2" %><br>
+      <%= form.date_field :date, class: "form-control" %>
+      <% @event.errors.full_messages_for(:date).each do |message| %>
+        <div class="text-danger"><%= message %></div>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<div class="row mb-3">
-  <div class="col-md-12">
-    <%= form.label :location, class:"form-label mb-2" %><br />
-    <%= form.text_area :location, class: "form-control" %> <%
-    @event.errors.full_messages_for(:location).each do |message| %>
-    <div class="text-danger"><%= message %></div>
-    <% end %>
+  <div class="row mb-3">
+    <div class="col-md-12">
+      <%= form.label :location, class:"form-label mb-2" %><br>
+      <%= form.text_area :location, class: "form-control" %>
+      <% @event.errors.full_messages_for(:location).each do |message| %>
+        <div class="text-danger"><%= message %></div>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<div class="row mb-5">
-  <div class="col-md-12">
-    <%= form.label :cost, class:"form-label mb-2" %><br />
-    <%= form.number_field :cost, step: :any, class: "form-control" %>
+  <div class="row mb-5">
+    <div class="col-md-12">
+      <%= form.label :cost, class:"form-label mb-2" %><br>
+      <%= form.number_field :cost, step: :any, class: "form-control" %>
+    </div>
   </div>
-</div>
 
 <div class="row mb-5">
   <div class="col-md-12">
