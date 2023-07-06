@@ -1,8 +1,8 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[update destroy edit]
+  before_action :set_event, only: %i[edit update destroy]
   before_action :authenticate_user!
   def index
-    @events = Event.all
+    @events = Event.all.with_attached_image
   end
 
   def new
@@ -13,7 +13,9 @@ class EventsController < ApplicationController
     @event = Event.new(events_params)
     if @event.save
       redirect_to events_path
-      render :new, status: :unprocessable_entity
+    else
+      flash[:errors] = @event.errors.full_messages
+      render :new
     end
   end
 
@@ -36,7 +38,7 @@ class EventsController < ApplicationController
   private
 
   def events_params
-    params.require(:event).permit(:title, :description, :date, :location, :cost)
+    params.require(:event).permit(:title, :description, :date, :location, :cost, :image)
   end
 
   def set_event

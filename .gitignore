@@ -32,3 +32,5 @@
 
 settings.json
 
+#Ignore .vscode folder
+.vscode/
