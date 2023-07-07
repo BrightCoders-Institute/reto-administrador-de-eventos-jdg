@@ -22,6 +22,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <%= link_to 'START' , events_path , class: 'btn btn-primary mx-2' %>
             <% if user_signed_in? %>
+              <%= link_to 'PROFILE' , profiles_path , class: 'btn btn-primary mx-2' %>
               <%= link_to 'SIGN OUT', destroy_user_session_path, class: 'btn btn-secondary', data: { turbo_method: :delete } %>
             <% else %>
               <%= link_to "LOGIN" , user_session_path, class: 'btn btn-dark' %>

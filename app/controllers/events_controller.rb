@@ -1,8 +1,10 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[edit update destroy]
   before_action :authenticate_user!
+  before_action :authorize_user, only: %i[edit update destroy]
+
   def index
-    @events = Event.all.with_attached_image
+    @events = Event.where(public: true).with_attached_image.paginate(page: params[:page], per_page: 4)
   end
 
   def new
@@ -10,12 +12,11 @@ class EventsController < ApplicationController
   end
 
   def create
-    @event = Event.new(events_params)
+    @event = current_user.events.build(events_params)
     if @event.save
-      redirect_to events_path
+      redirect_to profiles_path
     else
-      flash[:errors] = @event.errors.full_messages
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -23,7 +24,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(events_params)
-      redirect_to events_path
+      redirect_to profiles_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -32,16 +33,24 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
 
-    redirect_to events_path, status: :see_other
+    redirect_to profile_path, status: :see_other
   end
 
   private
 
   def events_params
-    params.require(:event).permit(:title, :description, :date, :location, :cost, :image)
+    params.require(:event).permit(:title, :description, :date, :location, :cost, :image, :public)
   end
 
   def set_event
     @event = Event.find(params[:id])
   end
+
+  def authorize_user
+    unless @event.user == current_user
+      flash[:alert] = "You are not authorized to perform this action."
+      redirect_to root_path
+    end
+  end
+
 end
