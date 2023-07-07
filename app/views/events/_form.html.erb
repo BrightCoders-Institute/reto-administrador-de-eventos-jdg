@@ -54,6 +54,11 @@
   </div>
 </div>
 
+<div class="field">
+  <%= form.label :public %>
+  <%= form.select :public, [['Public', true], ['Private', false]] %>
+</div>
+
 <div class="text-center">
   <%= form.submit class: "btn btn-primary text-white text-uppercase" %>
 </div>

@@ -1,16 +1,18 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[edit update destroy]
   before_action :authenticate_user!
+
   def index
-    @events = Event.all.with_attached_image
+    @events = Event.where(public: true).with_attached_image
   end
+  
 
   def new
     @event = Event.new
   end
 
   def create
-    @event = Event.new(events_params)
+    @event = current_user.events.build(events_params)
     if @event.save
       redirect_to events_path
     else
@@ -37,7 +39,7 @@ class EventsController < ApplicationController
   private
 
   def events_params
-    params.require(:event).permit(:title, :description, :date, :location, :cost, :image)
+    params.require(:event).permit(:title, :description, :date, :location, :cost, :image, :public)
   end
 
   def set_event

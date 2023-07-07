@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row text-center my-5">
-    <h1>PUBLIC EVENTS</h1>
+    <h1>EVENTS</h1>
   </div>
   <table class="table table-striped table-hover table-bordered">
     <thead class="event-list text-center text-white">
@@ -11,6 +11,9 @@
         <th scope="col">DATE</th>
         <th scope="col">LOCATION</th>
         <th scope="col">COST</th>
+        <th colspan="2" scope="col">ACTIONS</th>
+        <th scope="col">PRIVACY</th>
+        <%= link_to 'NEW EVENT' , new_event_path, class: 'btn btn-form mb-3' %>
       </tr>
     </thead>
     <tbody>
@@ -40,6 +43,22 @@
           </td>
           <td class="align-middle text-center">
             $<%= event.cost %>
+          </td>
+          <td class="align-middle text-center">
+            <div class="rounded-3 p-2 d-flex justify-content-center bg-info">
+              <%= link_to "Edit" , edit_event_path(event),
+                class: "material-symbols-outlined hover-span text-white text-decoration-none" %>
+            </div>
+          </td>
+          <td class="align-middle text-center">
+            <div class="rounded-3 p-2 d-flex justify-content-center bg-danger">
+              <%= link_to "Delete" , event_path(event), method: :delete, data: { turbo_method: :delete,
+                turbo_confirm: "Are you sure?" },
+                class: "material-symbols-outlined hover-span text-white text-decoration-none" %>
+            </div>
+          </td>
+          <td class="align-middle text-center">
+            <%= event.public ? "Public" : "Private" %>
           </td>
         </tr>
         <% end %>
