@@ -1,6 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: %i[edit update destroy]
   before_action :authenticate_user!
+  before_action :authorize_user, only: %i[edit update destroy]
 
   def index
     @events = Event.where(public: true).with_attached_image.paginate(page: params[:page], per_page: 4)
@@ -44,4 +45,12 @@ class EventsController < ApplicationController
   def set_event
     @event = Event.find(params[:id])
   end
+
+  def authorize_user
+    unless @event.user == current_user
+      flash[:alert] = "You are not authorized to perform this action."
+      redirect_to root_path
+    end
+  end
+
 end
