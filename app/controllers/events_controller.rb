@@ -3,9 +3,8 @@ class EventsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @events = Event.where(public: true).with_attached_image
+    @events = Event.where(public: true).with_attached_image.paginate(page: params[:page], per_page: 4)
   end
-  
 
   def new
     @event = Event.new
@@ -14,7 +13,7 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.build(events_params)
     if @event.save
-      redirect_to events_path
+      redirect_to profiles_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -24,7 +23,7 @@ class EventsController < ApplicationController
 
   def update
     if @event.update(events_params)
-      redirect_to events_path
+      redirect_to profiles_path
     else
       render :edit, status: :unprocessable_entity
     end
@@ -33,7 +32,7 @@ class EventsController < ApplicationController
   def destroy
     @event.destroy
 
-    redirect_to events_path, status: :see_other
+    redirect_to profile_path, status: :see_other
   end
 
   private

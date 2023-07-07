@@ -83,3 +83,6 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+#Gem that allows you to paginate tables
+gem 'will_paginate'
