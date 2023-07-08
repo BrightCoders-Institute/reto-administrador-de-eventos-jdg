@@ -27,6 +27,9 @@ gem 'stimulus-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
+#Ransak
+gem 'ransack'
+
 # Rubocop
 gem 'rubocop'
 

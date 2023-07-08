@@ -4,8 +4,10 @@ class EventsController < ApplicationController
   before_action :authorize_user, only: %i[edit update destroy]
 
   def index
-    @events = Event.where(public: true).with_attached_image.paginate(page: params[:page], per_page: 4)
+    @q = Event.ransack(params[:q])
+    @events = @q.result(distinct: true).where(public: true).with_attached_image.paginate(page: params[:page], per_page: 4)
   end
+  
 
   def new
     @event = Event.new
