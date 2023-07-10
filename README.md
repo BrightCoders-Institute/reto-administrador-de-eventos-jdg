@@ -7,7 +7,8 @@
 > Ese reto se desarrolla por etapas, al finalizar cada etapa se agregarán los requerimientos de la nueva
 
 - [Etapa 1: Implementación básica de un administrador de eventos](instructions/stage1.md)
-- 🚀 [Etapa 2: Implementación avanzada de un administrador de eventos](instructions/stage2.md)
+- [Etapa 2: Implementación avanzada de un administrador de eventos](instructions/stage2.md)
+- 🚀 [Etapa 3: Implementación de opciones finales](instructions/stage3.md)
 
 
 This README would normally document whatever steps are necessary to get the application up and running.
