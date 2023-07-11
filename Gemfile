@@ -89,3 +89,8 @@ end
 
 #Gem that allows you to paginate tables
 gem 'will_paginate'
+
+#Letter opener
+group :development do
+  gem 'letter_opener'
+end
