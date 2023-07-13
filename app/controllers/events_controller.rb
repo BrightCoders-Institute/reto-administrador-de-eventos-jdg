@@ -4,9 +4,10 @@ class EventsController < ApplicationController
   before_action :authorize_user, only: %i[edit update destroy]
 
   def index
-    @events = Event.where(public: true).with_attached_image.paginate(page: params[:page], per_page: 4)
+    @q = Event.ransack(params[:q])
+    @events = @q.result(distinct: true).where(public: true).with_attached_image.paginate(page: params[:page], per_page: 4)
   end
-
+  
   def new
     @event = Event.new
   end
@@ -23,7 +24,9 @@ class EventsController < ApplicationController
   def edit; end
 
   def update
-    if @event.update(events_params)
+    @event.image.purge if events_params[:remove_image] == "1"
+
+    if @event.update(events_params.except(:remove_image))
       redirect_to profiles_path
     else
       render :edit, status: :unprocessable_entity
@@ -39,7 +42,7 @@ class EventsController < ApplicationController
   private
 
   def events_params
-    params.require(:event).permit(:title, :description, :date, :location, :cost, :image, :public)
+    params.require(:event).permit(:title, :description, :date, :location, :cost, :image, :public, :remove_image)
   end
 
   def set_event

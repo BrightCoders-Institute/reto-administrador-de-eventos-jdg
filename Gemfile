@@ -27,6 +27,9 @@ gem 'stimulus-rails'
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem 'jbuilder'
 
+#Ransak
+gem 'ransack'
+
 # Rubocop
 gem 'rubocop'
 
@@ -86,3 +89,8 @@ end
 
 #Gem that allows you to paginate tables
 gem 'will_paginate'
+
+#Letter opener
+group :development do
+  gem 'letter_opener'
+end
