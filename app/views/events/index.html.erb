@@ -2,6 +2,8 @@
   <div class="row text-center my-5">
     <h1>PUBLIC EVENTS</h1>
   </div>
+  
+  <%= link_to "Export CSV", export_events_path(format: :csv), class: "btn btn-primary mb-4" %>
   <%= search_form_for @q, url: events_path, html: { method: :get } do |f| %>
     <div class="form-row">
       <div class="col-md-3">
@@ -40,7 +42,7 @@
             <% if event.image.attached? %>
               <div class="d-flex justify-content-center">
                 <%= image_tag rails_blob_path(event.image, disposition: "attachment", only_path: true),
-                  class: "img-thumbnail img-fluid", width: "70", height: "70" %>
+                              class: "img-thumbnail img-fluid", width: "70", height: "70" %>
               </div>
             <% else %>
               No Image
@@ -65,6 +67,7 @@
       <% end %>
     </tbody>
   </table>
+
   <div class="pagination justify-content-center">
     <%= will_paginate @events %>
   </div>
