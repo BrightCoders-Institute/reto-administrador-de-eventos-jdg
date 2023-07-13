@@ -36,23 +36,28 @@
     </div>
   </div>
 
-  <div class="row mb-5">
+  <div class="row mb-3">
     <div class="col-md-12">
       <%= form.label :cost, class:"form-label mb-2" %><br>
       <%= form.number_field :cost, step: :any, class: "form-control" %>
     </div>
   </div>
 
-<div class="row mb-5">
-  <div class="col-md-12">
-    <% if @event.image.attached? %> 
-      <%= image_tag @event.image, style: "width: 200px; display: block" %>
-    <% end %>
-
-    <%= form.label :image %>
-    <%= form.file_field :image, class: "form-control" %> 
+  <div class="row mb-4">
+    <div class="col-md-12">
+      <% if @event.image.attached? %>
+        <%= image_tag @event.image, style: "width: 200px; display: block" %>
+          <label class="mb-4">
+            <%= form.check_box :remove_image %>
+            REMOVE IMAGE
+          </label>
+      <% end %>
+      <div class="row my-5">
+        <%= form.label :image %>
+        <%= form.file_field :image, class: "form-control" %>
+      </div>
+    </div>
   </div>
-</div>
 
 <div class="field">
   <%= form.label :public %>
@@ -60,6 +65,6 @@
 </div>
 
 <div class="text-center">
-  <%= form.submit class: "btn btn-primary text-white text-uppercase" %>
+  <%= form.submit class: "btn btn-primary text-white text-uppercase mg-5" %>
 </div>
 <% end %>
