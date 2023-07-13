@@ -97,6 +97,7 @@ GEM
       descendants_tracker (~> 0.0.1)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
+    csv (3.2.7)
     date (3.3.3)
     debug (1.8.0)
       irb (>= 1.5.0)
@@ -326,6 +327,7 @@ DEPENDENCIES
   bootsnap
   bootstrap
   capybara
+  csv
   debug
   devise (~> 4.9, >= 4.9.2)
   importmap-rails

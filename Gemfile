@@ -84,5 +84,8 @@ group :test do
   gem 'webdrivers'
 end
 
+#Gem CSV 
+gem 'csv'
+
 #Gem that allows you to paginate tables
 gem 'will_paginate'

@@ -1,3 +1,4 @@
+require 'csv'
 class EventsController < ApplicationController
   before_action :set_event, only: %i[edit update destroy]
   before_action :authenticate_user!
@@ -21,6 +22,14 @@ class EventsController < ApplicationController
   end
 
   def edit; end
+
+  def export
+    @events = Event.where(public: true)
+    
+    respond_to do |format|
+      format.csv { send_data @events.to_csv, filename: "events.csv" }
+    end
+  end
 
   def update
     if @event.update(events_params)
