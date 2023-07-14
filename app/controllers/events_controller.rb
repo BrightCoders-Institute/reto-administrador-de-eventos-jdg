@@ -13,6 +13,7 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.build(events_params)
     if @event.save
+      EventMailer.new_event_email(@event).deliver_now
       redirect_to profiles_path
     else
       render :new, status: :unprocessable_entity
@@ -40,6 +41,13 @@ class EventsController < ApplicationController
   def export
     respond_to do |format|
       format.csv { send_data @events.to_csv, filename: 'events.csv' }
+    end
+  end
+
+  def send_event_reminder_emails
+    events = Event.where(date: Date.today)
+    events.each do |event|
+      EventMailer.event_reminder_email(event).deliver_now
     end
   end
 
