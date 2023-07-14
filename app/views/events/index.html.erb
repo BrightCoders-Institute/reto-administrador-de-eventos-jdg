@@ -3,7 +3,7 @@
     <h1>PUBLIC EVENTS</h1>
   </div>
   
-  <%= link_to "Export CSV", export_events_path(format: :csv), class: "btn btn-primary mb-4" %>
+  <%= link_to "Export CSV", export_events_path(params: request.query_parameters.merge(format: :csv)), class: "btn btn-primary mb-4" %>
   <%= search_form_for @q, url: events_path, html: { method: :get } do |f| %>
     <div class="form-row">
       <div class="col-md-3">
@@ -19,7 +19,7 @@
         <%= f.date_field :date_lteq, class: "form-control" %>
       </div>
       <div class="col-md-2">
-        <%= f.submit "Apply Filters", class: "btn btn-primary mt-4" %>
+        <%= f.submit "Apply Filters", class: "btn btn-primary my-4" %>
       </div>
     </div>
   <% end %>
