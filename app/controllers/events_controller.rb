@@ -13,7 +13,7 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.build(events_params)
     if @event.save
-      EventMailer.new_event_email(@event).deliver_now
+      EventReminderJob.perform_at(1.minute.from_now, @event.id)
       redirect_to profiles_path
     else
       render :new, status: :unprocessable_entity
@@ -59,8 +59,7 @@ class EventsController < ApplicationController
 
   def applied_filters
     @q = Event.ransack(params[:q])
-    @events = @q.result(distinct: true).where(public: true).with_attached_image.paginate(page: params[:page],
-                                                                                         per_page: 4)
+    @events = @q.result(distinct: true).where(public: true).with_attached_image.paginate(page: params[:page], per_page: 4)
   end
 
   def set_event
