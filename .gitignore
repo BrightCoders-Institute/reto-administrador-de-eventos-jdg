@@ -29,6 +29,6 @@
 
 # Ignore master key for decrypting credentials and more.
 settings.json
-
+/config/master.key
 #Ignore .vscode folder
 .vscode/

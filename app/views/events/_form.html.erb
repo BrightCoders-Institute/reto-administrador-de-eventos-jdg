@@ -28,6 +28,16 @@
 
   <div class="row mb-3">
     <div class="col-md-12">
+      <%= form.label :reminder_date, class:"form-label mb-2" %><br>
+      <%= form.date_field :reminder_date, class: "form-control" %>
+      <% @event.errors.full_messages_for(:reminder_date).each do |message| %>
+        <div class="text-danger"><%= message %></div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-12">
       <%= form.label :location, class:"form-label mb-2" %><br>
       <%= form.text_area :location, class: "form-control" %>
       <% @event.errors.full_messages_for(:location).each do |message| %>

@@ -13,7 +13,8 @@ class EventsController < ApplicationController
   def create
     @event = current_user.events.build(events_params)
     if @event.save
-      EventReminderJob.perform_at(1.minute.from_now, @event.id)
+      reminder_datetime = @event.reminder_date.to_datetime
+      EventReminderJob.perform_at(reminder_datetime + 6.hours, @event.id)
       redirect_to profiles_path
     else
       render :new, status: :unprocessable_entity
@@ -44,17 +45,10 @@ class EventsController < ApplicationController
     end
   end
 
-  def send_event_reminder_emails
-    events = Event.where(date: Date.today)
-    events.each do |event|
-      EventMailer.event_reminder_email(event).deliver_now
-    end
-  end
-
   private
 
   def events_params
-    params.require(:event).permit(:title, :description, :date, :location, :cost, :image, :public, :remove_image)
+    params.require(:event).permit(:title, :description, :date, :location, :cost, :image, :public, :remove_image, :reminder_date)
   end
 
   def applied_filters

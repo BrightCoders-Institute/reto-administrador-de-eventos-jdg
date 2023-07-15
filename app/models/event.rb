@@ -1,7 +1,7 @@
 class Event < ApplicationRecord
   has_one_attached :image, dependent: :destroy
   belongs_to :user
-  validates :title, :date, :location, presence: true
+  validates :title, :date, :location, :reminder_date, presence: true
 
   def self.ransackable_attributes(_auth_object = nil)
     %w[cost created_at date description id location public title updated_at user_id specific_date]
