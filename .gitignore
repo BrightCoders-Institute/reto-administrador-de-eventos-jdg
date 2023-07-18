@@ -28,9 +28,7 @@
 /public/assets
 
 # Ignore master key for decrypting credentials and more.
-/config/master.key
-
 settings.json
-
+/config/master.key
 #Ignore .vscode folder
 .vscode/
